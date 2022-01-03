@@ -12,13 +12,16 @@
  * Text Domain: CustomTxt
  * Domain Path: /languages
  */
+
   namespace CustomPlugin;
-   include __DIR__.'/admin-menu.php';
+  include __DIR__.'/admin-menu.php';
+  include __DIR__.'/custom-post-type.php';
   if( !class_exists( 'Plugin' ) ) {
       class Plugin {
 
         public function __construct(){
             AdminMenu::init();
+            PostType::init();
         }
       }
       new Plugin();
