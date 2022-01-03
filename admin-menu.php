@@ -9,20 +9,37 @@
             }
 
             public static function initAction() {
-                add_action( 'admin_menu', array(__CLASS__, 'get_menus') );
+                add_action( 'admin_menu', array(__CLASS__, 'get_menus'), 10 );
             }
 
             public static function get_menus() {
                 add_menu_page(
-                    'CustomPlugin',
+                    'PluginByBikram',
                     'PluginByBikram',
                     'manage_options',
-                    'plugin page',
-                    'page_func',
+                    'custom-plugin',
+                    array(__CLASS__,'display_menu_message'),
                     '',
-                    6
+                    9
                 );
 
+                add_submenu_page(
+                    'custom-plugin',
+                    'Plugin Setting',
+                    'Plugin Setting',
+                    'manage_options',
+                    'add-new',
+                    array(__CLASS__,'display_submenu_message')
+                );
+
+            }
+
+            public static function display_submenu_message() {
+                echo "New submenu";
+            }
+
+            public static function display_menu_message() {
+                echo "New Menu added";
             }
         }
     }
