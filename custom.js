@@ -7,6 +7,9 @@ jQuery( document ).ready( function() {
         if( e.isDefaultPrevented() ) {
             console.log("Button is prevented");
         }
-    })
+
+        wp.media().open();
+            
+    });
 });
 
