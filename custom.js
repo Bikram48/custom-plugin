@@ -10,7 +10,13 @@ jQuery( document ).ready( function() {
 
         var button = jQuery(this),
             custom_uploader = wp.media({
-                title: 'Insert Image'
+                title: 'Insert Image',
+                library: {
+                    type: 'image'
+                },
+                button: {
+                    text: 'Use this image'
+                }
             })
         .open();
             
