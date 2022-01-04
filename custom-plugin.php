@@ -13,21 +13,29 @@
  * Domain Path: /languages
  */
 
-  namespace CustomPlugin;
+namespace CustomPlugin;
 
 use IconUploaderMenu;
 
-  include __DIR__.'/admin-menu.php';
-  include __DIR__.'/custom-post-type.php';
-  include __DIR__.'/NavMenuIconUploader.php';
-  if( !class_exists( 'Plugin' ) ) {
-      class Plugin {
+include __DIR__.'/admin-menu.php';
+include __DIR__.'/custom-post-type.php';
+include __DIR__.'/NavMenuIconUploader.php';
 
-        public function __construct(){
-            AdminMenu::init();
-            PostType::init();
-            IconUploaderMenu::init();
-        }
+if ( ! class_exists( 'Plugin' ) ) {
+    class Plugin {
+
+      public function __construct(){
+          AdminMenu::init();
+          PostType::init();
+          IconUploaderMenu::init();
       }
-      new Plugin();
-  }
+    }
+
+    new Plugin();
+}
+
+add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
+  wp_enqueue_media();
+});
+
+
