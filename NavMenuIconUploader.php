@@ -16,7 +16,9 @@
             public static function add_upload_option( $item_id ) { ?>
                 <?php 
                 echo '
+                    <label for="submit">Upload Icon <br/>
                 	<input id="submit" type="text" placeholder="Upload Icon">
+                    </label>
                 ';
                 ?>
 <?php       }
@@ -26,6 +28,5 @@
                 wp_enqueue_script( 'custom-plugin-script', plugin_dir_url( __FILE__ ) . '/custom.js' );
             }
         }
-
     }
     
