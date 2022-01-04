@@ -34,8 +34,4 @@ if ( ! class_exists( 'Plugin' ) ) {
     new Plugin();
 }
 
-add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
-  wp_enqueue_media();
-});
-
 
