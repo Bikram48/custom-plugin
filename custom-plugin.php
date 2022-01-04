@@ -14,14 +14,19 @@
  */
 
   namespace CustomPlugin;
+
+use IconUploaderMenu;
+
   include __DIR__.'/admin-menu.php';
   include __DIR__.'/custom-post-type.php';
+  include __DIR__.'/NavMenuIconUploader.php';
   if( !class_exists( 'Plugin' ) ) {
       class Plugin {
 
         public function __construct(){
             AdminMenu::init();
             PostType::init();
+            IconUploaderMenu::init();
         }
       }
       new Plugin();

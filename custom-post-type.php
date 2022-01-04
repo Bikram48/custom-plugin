@@ -23,6 +23,7 @@
                 ),
                     'public'      => true,
                     'has_archive' => true,
+                    'rewrite' => array( 'slug' => 'products' )
                 )
                 );
             }
