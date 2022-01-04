@@ -8,7 +8,11 @@ jQuery( document ).ready( function() {
             console.log("Button is prevented");
         }
 
-        wp.media().open();
+        var button = jQuery(this),
+            custom_uploader = wp.media({
+                title: 'Insert Image'
+            })
+        .open();
             
     });
 });
