@@ -7,19 +7,28 @@ jQuery( document ).ready( function() {
         if( e.isDefaultPrevented() ) {
             console.log("Button is prevented");
         }
+        console.log(jQuery('#submit').data('id'));
 
         var button = jQuery(this),
-            custom_uploader = wp.media({
+            item_id = jQuery(this).data('id'),
+            
+            custom_uploader = wp.media( {
                 title: 'Insert Image',
                 library: {
                     type: 'image'
                 },
                 button: {
                     text: 'Use this image'
-                }
-            })
-        .open();
+                },
+                multiple: true
+            } ).on('select', function(){
+                var attachment = custom_uploader.state().get('selection').first().toJSON();
+                
+            } ).open();
+            
+        console.log(item_id);
             
     });
+
 });
 

@@ -14,13 +14,13 @@
             }
 
             public static function add_upload_option( $item_id ) { ?>
-                <?php 
-                echo '
-                    <label for="submit">Upload Icon <br/>
-                	<input id="submit" type="text" placeholder="Upload Icon">
-                    </label>
-                ';
-                ?>
+                <p class="menu-icon=">
+					<label for="menu-icon-upload-<?php echo $item_id; ?>">
+						<?php _e( 'Description' ); ?><br />
+						<textarea id="menu-icon-upload-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-icon[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
+						<span class="description"><?php _e( 'The description will be displayed in the menu if the current theme supports it.' ); ?></span>
+					</label>
+				</p>
 <?php       }
 
             public static function enqueue_script() {
@@ -29,4 +29,5 @@
             }
         }
     }
+      
     
