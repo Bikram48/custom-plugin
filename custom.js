@@ -1,6 +1,7 @@
 // jQuery document ready
 jQuery( document ).ready( function() {
-    jQuery( "#submit" ).click(function( e ) {
+    
+    jQuery( "#menu-icon-upload" ).click(function( e ) {
 
         e.preventDefault();
 
