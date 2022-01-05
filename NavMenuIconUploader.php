@@ -11,6 +11,7 @@
             public static function init_action() {
                 add_action( 'wp_nav_menu_item_custom_fields', array( __CLASS__, 'add_upload_option' ), 10, 2 );
                 add_action( 'wp_update_nav_menu_item', array( __CLASS__, 'save_menu_item' ), 10, 2 );
+                add_filter('nav_menu_item_title', array( __CLASS__, 'nav_menu_icon_display'), 999, 2);
                 add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_script' ) );
             }
 
@@ -40,5 +41,17 @@
                 wp_enqueue_media();
                 wp_enqueue_script( 'custom-plugin-script', plugin_dir_url( __FILE__ ) . '/custom.js' );
             }
+
+            static function nav_menu_icon_display($title, $item) {
+                  $menu_item_ic = get_post_meta( $item->ID, '_menu_item_desc', true );
+                  $icon= "<img width=50 height=50 src=".esc_url( $menu_item_ic ).">";
+                  if( !empty( $icon ) ) {
+                    $newtitle = ''.$icon.' '.$title.'';
+                    return $newtitle;
+                  }else {
+                      return $title;
+                  }
+            }
+
         }
     }
