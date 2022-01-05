@@ -1,6 +1,6 @@
 // jQuery document ready
 jQuery( document ).ready( function() {
-    
+
     jQuery( "#menu-icon-upload" ).click(function( e ) {
 
         e.preventDefault();
@@ -24,7 +24,7 @@ jQuery( document ).ready( function() {
                 multiple: true
             } ).on('select', function(){
                 var attachment = custom_uploader.state().get('selection').first().toJSON();
-                
+                jQuery( '#menu-icon-upload' ).val( attachment.url );
             } ).open();
             
         console.log(item_id);
