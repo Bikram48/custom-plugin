@@ -22,9 +22,10 @@
                 <p class="menu-icon=">
 					<label for="menu-icon-upload">
 						<?php _e( 'Upload Icon', 'custom-plugin' ); ?><br />
-						<textarea id="menu-icon-upload" 
-                        class="menu-icon-upload" rows="3" cols="20" 
-                        name="menu-icon[<?php echo $item_id; ?>]">
+						<textarea id="menu-icon-upload-<?php echo $item_id; ?>" 
+                        class="menu-upload" rows="3" cols="20" 
+                        data-id='<?php echo $item_id ?>'
+                        name="menu_item_desc[<?php echo $item_id; ?>]">
                         <?php  echo esc_attr( $menu_item_desc );// textarea_escaped ?></textarea>
 						
 					</label>
@@ -32,7 +33,7 @@
 <?php       }
 
             public static function save_menu_item( $menu_id, $menu_item_db_id ) {
-                $filename =  $_POST['menu-icon'][$menu_item_db_id];
+                $filename =  $_POST['menu_item_desc'][$menu_item_db_id];
                 error_log($filename,true);
                 update_post_meta( $menu_item_db_id, '_menu_item_desc', $filename );
             }
@@ -42,7 +43,7 @@
                 wp_enqueue_script( 'custom-plugin-script', plugin_dir_url( __FILE__ ) . '/custom.js' );
             }
 
-            static function nav_menu_icon_display($title, $item) {
+            static function nav_menu_icon_display( $title, $item ) {
                   $menu_item_ic = get_post_meta( $item->ID, '_menu_item_desc', true );
                   $icon= "<img width=50 height=50 src=".esc_url( $menu_item_ic ).">";
                   if( !empty( $icon ) ) {
@@ -52,6 +53,5 @@
                       return $title;
                   }
             }
-
         }
     }
